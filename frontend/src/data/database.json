@@ -1,0 +1,6 @@
+{
+    "lottery": [
+      { "id": 1, "name": "Player 1", "number": "12345",  },
+      { "id": 2, "name": "Player 2", "number": "67890" }
+    ]
+  }

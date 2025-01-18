@@ -1,0 +1,99 @@
+/* General styles */
+*{
+    margin: 0px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #ff00bb;
+}
+.inputss{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.inputss input{
+    margin: 20px auto;
+    padding: 20px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-right: 20px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Weekly input section styles */
+.weekly-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.weekly-section h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* Media queries */
+@media (min-width: 768px) {
+    .inputss {
+        padding: 40px;
+        max-width: 800px;
+    }
+
+    form {
+        gap: 30px;
+    }
+
+    .weekly-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .inputss {
+        max-width: 1200px;
+    }
+
+    form {
+        gap: 40px;
+    }
+
+    .weekly-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

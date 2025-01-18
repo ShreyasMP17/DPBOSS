@@ -1,0 +1,40 @@
+.responsive-table {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.table th {
+    background-color: #f4f4f4;
+}
+
+@media screen and (max-width: 768px) {
+    .table th,
+    .table td {
+        font-size: 12px;
+    }
+}
+
+.lottery-cell {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    margin: 5px;
+}
+.logo img{
+    height: 84px;
+    width: 292px;
+}
