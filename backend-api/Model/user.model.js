@@ -73,7 +73,7 @@ const Lottery = mongoose.Schema({
         default: Date.now // Automatically set the current date and time
     },
     weeklyResults:[weeklyResultSchema]
-})
+}, { collection: 'Lotteries' });
 
 module.exports = new mongoose.model('Lottery',Lottery)
 
