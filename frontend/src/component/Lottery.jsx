@@ -67,7 +67,8 @@ const LotteryHome = () => {
             <div className='heading'>
                 <img src="/shiva.avif" alt="" />
                 <p>!! Welcome to DP Bosservices !! Satta Matka Fast Result</p>
-                <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button">Chat with Us</a>
+                <img src="/shiva.avif" alt="" />
+                {/* <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button">Chat with Us</a> */}
             </div>
             <div class="text2">
                 <h1 >Satta Matka DPBOSS Kalyan Matka Result</h1>
@@ -834,7 +835,8 @@ If you are the one who does not like our disclaimer it is advised that you leave
   </p>
 </div>
 <button onclick="saveScrollPosition(); window.location.reload();" class="clk1-rld btm-clk1-f">REFRESH </button>
-<a target="_blank" class="mp-clk1" href="#"><i>Matka Play</i></a>
+<a target="_blank" class="mp-clk1" href="https://wa.me/6363915470?text=Hello%20DP%20Boss,%20I%20am%20trying%20to%20contact%20you
+"><i>Matka Play</i></a>
         </div>
 
 
