@@ -31,7 +31,7 @@ const Demon = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                `http://localhost:3000/post-week/${id}/weekly`,
+                `https://dpbosservices.in:5000/post-week/${id}/weekly`,
                 { week, data }
             );
             setMessage(response.data.message);

@@ -125,6 +125,12 @@ a:-webkit-any-link {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.panel-body {
+    overflow-x: auto;
+}
+
+
 .pannel .panel-info {
     border: 1px solid #3f51b5;
     width: 20%;
@@ -279,5 +285,14 @@ footer p span {
 @media only screen and (max-width: 770px) {
     .pannel.panel-info {
         width: 95%;
+        
     }
+    .panel-chart th, .panel-chart td {
+        font-size: 12px;
+        padding: 3px;
+    }
+    .mid-cell{
+        padding: 5px;
+    }
+
 }

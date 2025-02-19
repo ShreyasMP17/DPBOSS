@@ -18,7 +18,7 @@ const Jodi = () => {
     useEffect(() => {
       const fetchWeeklyResults = async () => {
         try {
-          const response = await axios.get("http://localhost:3000/get-data");
+          const response = await axios.get("https://dpbosservices.in:5000/get-data");
           const data = response.data.data.find((item) => item.id === parseInt(id));
           setLotteryData(data ? data.weeklyResults : []);
           setName(data.name)

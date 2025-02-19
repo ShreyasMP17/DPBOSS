@@ -22,7 +22,7 @@ const AdminWeekLottery = () => {
   useEffect(() => {
     const fetchLotteryData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/get-data");
+        const response = await axios.get("https://dpbosservices.in:5000/get-data");
         setLotteryData(response.data.data);
       } catch (err) {
         setError("Error fetching today's data.");

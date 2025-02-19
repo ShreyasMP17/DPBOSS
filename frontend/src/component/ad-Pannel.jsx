@@ -14,11 +14,13 @@ const AdminPannel = () => {
   const[leftNo,setLeftNo]=useState(null);
   const[midNo,setMidNo]=useState(null);
   const[rightNo,setRightNo]=useState(null);
+  
+
 
   useEffect(() => {
     const fetchWeeklyResults = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/get-data");
+        const response = await axios.get("https://dpbosservices.in:5000/get-data");
         const data = response.data.data.find((item) => item.id === parseInt(id));
         setLotteryData(data ? data.weeklyResults : []);
         setName(data.name)
@@ -49,6 +51,28 @@ const AdminPannel = () => {
 
   const isResultDoubleDigits = (result) => {
     return result?.length === 2 && result[0] === result[1];
+};
+
+
+const handleDelete = async (weekToDelete) => {
+    // Show a confirmation alert before deleting
+    const isConfirmed = window.confirm(`Are you sure you want to delete the results for week: ${weekToDelete}?`);
+    
+    if (!isConfirmed) return; // If user cancels, stop execution
+
+    try {
+        const response = await axios.delete(
+            `https://dpbosservices.in:5000/${id}/weekly`,
+            { data: { week: weekToDelete } }
+        );
+
+        // Update state to reflect the deletion
+        setLotteryData(lotteryData.filter((result) => result.week !== weekToDelete));
+
+        alert("Week deleted successfully!");
+    } catch (error) {
+        setError(error.response?.data?.message || "An error occurred while deleting the week.");
+    }
 };
 
 
@@ -113,7 +137,17 @@ const AdminPannel = () => {
                                             </td>
                                         );
                                     })}
-                                </tr>
+                                    {/* Delete Button */}
+            {/* <td>
+                <button 
+                    onClick={() => handleDelete(result.week)}
+                    className="delete-btn"
+                >
+                    Delete
+                </button>
+            </td> */}
+        </tr>
+                               
                             ))}
                         </tbody>
                     </table>

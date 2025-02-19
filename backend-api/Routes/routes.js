@@ -1,5 +1,5 @@
 const express = require('express')
-const { getLottery,createLottery, getLotteryById, updateLottery,createWeekLottery, getLiveResults, editWeekLottery, deleteLottery, postWeek, updateWeek } = require('../Controller/user.controller')
+const { getLottery,createLottery, getLotteryById, updateLottery,createWeekLottery, deleteWeekLottery, getLiveResults, editWeekLottery, deleteLottery, postWeek, updateWeek } = require('../Controller/user.controller')
 const{createAdmin,loginAdmin, getAllAdmins, } = require('../Controller/adminLogin.controler')
 const router = express.Router()
 
@@ -16,6 +16,8 @@ router.get('/get-data/:id', getLotteryById);
 router.put('/get-data/:id', updateLottery);
 router.delete('/get-data/:id', deleteLottery);
 router.post('/post-week/:id/weekly', createWeekLottery);
+router.delete("/lottery/:id/delete-week", deleteWeekLottery);
+
 router.put('/edit-week/:id/weekly', editWeekLottery);
 router.get('/live-data', getLiveResults);
 

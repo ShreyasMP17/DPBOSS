@@ -32,7 +32,7 @@ const WeekUpadte = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                `http://localhost:3000/post-week/${id}/weekly`,
+                `https://dpbosservices.in:5000/post-week/${id}/weekly`,
                 { week, data }
             );
             setMessage(response.data.message);
@@ -118,7 +118,7 @@ export default WeekUpadte;
 //   const updatedData = data[day];
 //   try {
 //       const response = await axios.post(
-//           `http://localhost:3000/edit-week/${id}/weekly`, // Use your edit endpoint
+//           `https://dpbosservices.in:5000/edit-week/${id}/weekly`, // Use your edit endpoint
 //           {
 //               week, // Use the week corresponding to the day
 //               data: updatedData, // Updated data for that week

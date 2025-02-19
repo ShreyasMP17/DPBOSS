@@ -10,7 +10,7 @@ const LiveResults = () => {
   useEffect(() => {
     const fetchLiveResults = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/live-results");
+        const response = await axios.get("https://dpbosservices.in:5000/live-results");
         setLiveResults(response.data.data); // Update live results from backend
       } catch (err) {
         setError("Error fetching live results.");

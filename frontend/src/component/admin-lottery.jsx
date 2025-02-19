@@ -22,7 +22,7 @@ const AdminLottery = () => {
   useEffect(() => {
     const fetchLotteryData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/get-data");
+        const response = await axios.get("https://dpbosservices.in:5000/get-data");
         setLotteryData(response.data.data);
       } catch (err) {
         setError("Error fetching today's data.");
@@ -37,7 +37,7 @@ const AdminLottery = () => {
   // Create New Lottery Entry
   const createLottery = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/post-data", newLottery);
+      const response = await axios.post("https://dpbosservices.in:5000/post-data", newLottery);
       setLotteryData([...lotteryData, response.data.data]); // Add new lottery to state
       setNewLottery({ name: "", leftNo: "", midNo: "", rightNo: "", timeStart: "", timeEnd: "" }); // Reset form
     } catch (err) {
@@ -48,7 +48,7 @@ const AdminLottery = () => {
   // Update Existing Lottery Entry
   const updateLotteryEntry = async (id) => {
     try {
-      const response = await axios.put(`http://localhost:3000/get-data/${id}`, updateLottery);
+      const response = await axios.put(`https://dpbosservices.in:5000/get-data/${id}`, updateLottery);
       setLotteryData(
         lotteryData.map((item) =>
           item._id === id ? { ...item, ...response.data.lottery } : item
@@ -64,7 +64,7 @@ const AdminLottery = () => {
   // Delete Lottery Entry
   const deleteLottery = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/get-data/${id}`);
+      await axios.delete(`https://dpbosservices.in:5000/get-data/${id}`);
       setLotteryData(lotteryData.filter((item) => item._id !== id)); // Remove deleted lottery from state
     } catch (err) {
       setError("Error deleting lottery entry.");
@@ -220,7 +220,7 @@ export default AdminLottery;
 //     useEffect(() => {
 //         const fetchLotteryData = async () => {
 //             try {
-//                 const response = await axios.get("http://localhost:3000/get-data");
+//                 const response = await axios.get("https://dpbosservices.in:5000/get-data");
 //                 setLotteryData(response.data.data);
 //             } catch (error) {
 //                 console.error("Error fetching lottery data:", error.message);
@@ -242,7 +242,7 @@ export default AdminLottery;
 //                 timeEnd: "18:00",
 //                 weeklyResults: [],
 //             };
-//             const response = await axios.post("http://localhost:3000/post-data", newLottery);
+//             const response = await axios.post("https://dpbosservices.in:5000/post-data", newLottery);
 //             alert("Lottery added successfully");
 //             setLotteryData((prev) => [...prev, response.data.lottery]);
 //         } catch (error) {
@@ -255,7 +255,7 @@ export default AdminLottery;
 //     const updateLottery = async (id) => {
 //         try {
 //             const updatedData = { name: "Updated Lottery Name" };
-//             const response = await axios.put(`http://localhost:3000/get-data/${id}`, updatedData);
+//             const response = await axios.put(`https://dpbosservices.in:5000/get-data/${id}`, updatedData);
 //             alert("Lottery updated successfully");
 //             setLotteryData((prev) =>
 //                 prev.map((lottery) => (lottery._id === id ? response.data.lottery : lottery))
@@ -269,7 +269,7 @@ export default AdminLottery;
 //     // Delete Lottery
 //     const deleteLottery = async (id) => {
 //         try {
-//             await axios.delete(`http://localhost:3000/get-data/${id}`);
+//             await axios.delete(`https://dpbosservices.in:5000/get-data/${id}`);
 //             alert("Lottery deleted successfully");
 //             setLotteryData((prev) => prev.filter((lottery) => lottery._id !== id));
 //         } catch (error) {

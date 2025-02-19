@@ -14,7 +14,7 @@ const LotteryHome = () => {
   useEffect(() => {
     const fetchLotteryData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/get-data");
+        const response = await axios.get("https://dpbosservices.in:5000/get-data");
         setLotteryData(response.data.data);
       } catch (err) {
         setError("Error fetching today's data.");
@@ -34,7 +34,7 @@ const LotteryHome = () => {
   
     const fetchLiveData = async () => {
       try {
-          const response = await axios.get('http://localhost:3000/live-data');
+          const response = await axios.get('https://dpbosservices.in:5000/live-data');
           setLiveResults(response.data);
           setLoading(false);
       } catch (err) {
@@ -43,11 +43,11 @@ const LotteryHome = () => {
       }
   };
 
-  useEffect(() => {
-      fetchLiveData();
-      const interval = setInterval(fetchLiveData, 30000); // Refresh every 30 seconds
-      return () => clearInterval(interval); // Cleanup on component unmount
-  }, []);
+  // useEffect(() => {
+  //     fetchLiveData();
+  //     const interval = setInterval(fetchLiveData, 60000); // Refresh every 30 seconds
+  //     return () => clearInterval(interval); // Cleanup on component unmount
+  // }, []);
 
   if (loading) {
       return <div>Loading...</div>;
@@ -111,27 +111,7 @@ const LotteryHome = () => {
                     </div>
                 </div>
             </div>
-
-            {/* <div className="liveResult">
-      <h4>☔LIVE RESULT☔</h4>
-      <div className="lv-mc">Sabse Tezz Live Result Yahi Milega</div>
-      {displayedData.map((lottery) =>
-        lottery.status === "HIDE" ? null : (
-          <div className="live-re" key={lottery.id}>
-            <span className="h8">{lottery.name}</span>
-            <span className="h9">
-              {lottery.status === "LOADING"
-                ? "Loading..."
-                : `${lottery.leftNo}-${lottery.midNo}`}
-            </span>
-            <button onClick={() => window.location.reload()}>Refresh</button>
-            {/* {lottery.status !== "LOADING" && (
-              <div>सबसे तेज सबसे सही</div>
-            )} */}
-          {/* </div>
-        )
-      )}
-    </div> */} 
+ 
     <div className="liveResult">
         <h4>☔ LIVE RESULT ☔</h4>
         <div className="lv-mc">Sabse Tezz Live Result Yahi Milega</div>
@@ -172,10 +152,10 @@ const LotteryHome = () => {
 
             <h4 class="flyr24"> WORLD ME SABSE FAST SATTA MATKA RESULT </h4>
             <div className="display">
-              {lotteryData.map((data)=>(
+              {/* {lotteryData.map((data)=>(
                 
                   <div key={data.id}
-               className={`mainData ${[4, 10, 17, 23].includes(data.id) ? 'highlight' : ''}`}>
+               className={`mainData ${[5, 9, 13,17, 21, 28, 31, 35, 41, 45, 50].includes(data.id) ? 'highlight' : ''}`}>
          <h4>{data.name}</h4>
          <span>
            {data.leftNo}-{data.midNo}-{data.rightNo}
@@ -191,7 +171,31 @@ const LotteryHome = () => {
          </a>
        </div>
                 
-              ))}
+              ))} */}
+              {lotteryData
+  .sort((a, b) => a.id - b.id) // Sorting in ascending order
+  .map((data) => (
+    <div 
+      key={data.id}
+      className={`mainData ${[5, 9, 13, 17, 21, 28, 31, 35, 41, 45, 50].includes(data.id) ? 'highlight' : ''}`}
+    >
+      <h4>{data.name}</h4>
+      <span>
+        {data.leftNo}-{data.midNo}-{data.rightNo}
+      </span>
+      <p>
+        {data.timeStart}-{data.timeEnd}
+      </p>
+      <a href={`/jodi/${data.id}`} className="jodi">
+        Jodi
+      </a>
+      <a href={`/lottery/${data.id}`} className="panel">
+        Panel
+      </a>
+    </div>
+  ))}
+
+
   {/* {Array.isArray(lotteryData) && lotteryData.length > 0 ? (
     lotteryData.map((data) => (
       <div
@@ -229,7 +233,7 @@ const LotteryHome = () => {
             </div>
             <div class="sky-23"><h4>Matka Jodi List</h4><a href="#">Matka Jodi Count Chart</a><a href="#">Dhanvarsha Daily Fix Open To Close</a><a href="#">Matka Jodi Family Chart</a><a href="#">Penal Count Chart</a><a href="#">Penal Total Chart</a><a href="#">All 220 Card List</a>
             </div>
-            <div className='weekly'><h4>DpBoss Net Weekly Patti Or Penal Chart From 16-12-2024 To 22-12-2024 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
+            <div className='weekly'><h4>DpBoss Net Weekly Patti Or Penal Chart  For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
             </h4><p>1=&gt;119-579-470-146
                 </p><p>2=&gt;589-129-570-138
                 </p><p>3=&gt;157-166-346-689
@@ -242,7 +246,7 @@ const LotteryHome = () => {
                 </p><p>0=&gt;145-550-668-370
                 </p></div>
             <div className='weekly'>
-                <h4>DpBoss Net Weekly Line Open Or Close From 16-12-2024 To 22-12-2024 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
+                <h4>DpBoss Net Weekly Line Open Or Close  For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
                 </h4><p>Mon. 0-5-1-6
                 </p><p>Tue. 2-7-4-9
                 </p><p>Wed. 1-6-5-0
@@ -252,7 +256,7 @@ const LotteryHome = () => {
                 </p><p>Sun. 1-6-3-8
                 </p></div>
             <div className='weekly'>
-                <h4>DpBoss Net Weekly Jodi Chart From 16-12-2024 To 22-12-2024 For Kalyan Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night Market
+                <h4>DpBoss Net Weekly Jodi Chart  For Kalyan Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night Market
             </h4><p>20 25 70 75
                 </p><p>33 38 83 88
                 </p><p>10 15 60 65
@@ -826,15 +830,15 @@ Mumbai has been a great hub for Matka gambling since a long time now and has var
 If you are the one who does not like our disclaimer it is advised that you leave our website immediately. Copying of any information/contents posted on the website is strictly prohibited and against the law. 
 </p>
 </div>
-<h6 class="pow-13">POWERD BY dpbossss.services</h6>
+<h6 class="pow-13">POWERD BY dpbosservices.in</h6>
 <div class="lst-sec">
 <p>
-© 2011 - 2024 dpbossss.services <br/> 
+© 2011 - 2025 dpbosservices.in <br/> 
     <a href="#">About us</a> | <a href="#">Contact us</a> <br/>
     <a href="#">Privacy &amp; policy</a> | <a href="#">Term And Conditions</a>
   </p>
 </div>
-<button onclick="saveScrollPosition(); window.location.reload();" class="clk1-rld btm-clk1-f">REFRESH </button>
+<button onClick={() => window.location.reload()} class="clk1-rld btm-clk1-f">REFRESH </button>
 <a target="_blank" class="mp-clk1" href="https://wa.me/6363915470?text=Hello%20DP%20Boss,%20I%20am%20trying%20to%20contact%20you
 "><i>Matka Play</i></a>
         </div>

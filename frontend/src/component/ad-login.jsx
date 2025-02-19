@@ -15,7 +15,7 @@ const ADM = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/loginadmin", {
+      const response = await axios.post("https://dpbosservices.in:5000/loginadmin", {
         username: email,
         password: password,
       });

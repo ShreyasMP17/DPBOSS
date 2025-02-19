@@ -28,6 +28,6 @@ mongoose.connect(dbURL, {
 
 app.use('/', Router);
 
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
