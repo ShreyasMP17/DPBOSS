@@ -28,13 +28,18 @@ const AdminNavbar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/add-weekly" onClick={() => setIsMenuOpen(false)}>
+                    <Link to="/addpannel" onClick={() => setIsMenuOpen(false)}>
                         Add Weekly Results
                     </Link>
                 </li>
                 <li>
                     <Link to="/add-new" onClick={() => setIsMenuOpen(false)}>
                         Add New Lottery
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/admin-register" onClick={() => setIsMenuOpen(false)}>
+                        Add New Manager
                     </Link>
                 </li>
                 <li>

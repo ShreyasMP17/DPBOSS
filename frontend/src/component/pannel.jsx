@@ -4,6 +4,7 @@ import "../styles/pannel.css";
 import Logo from "./Logo"
 import Footer from "./fotter"
 import axios from "axios";
+import { getAllLotteries } from "../api/lotteryApi";
 
 const Pannel = () => {
     const { id } = useParams();
@@ -18,7 +19,7 @@ const Pannel = () => {
   useEffect(() => {
     const fetchWeeklyResults = async () => {
       try {
-        const response = await axios.get("https://dpbosservices.in:5000/get-data");
+        const response = await getAllLotteries();
         const data = response.data.data.find((item) => item.id === parseInt(id));
         setLotteryData(data ? data.weeklyResults : []);
         setName(data.name)
@@ -76,7 +77,7 @@ const Pannel = () => {
 
 <div className="pannel panel-info">
                 <div className="panel-heading">
-                    <h3> {name} MATKA PANNEL RECORD 2019 - 2024</h3>
+                    <h3> {name} MATKA PANNEL RECORD 2023 - 2025</h3>
                 </div>
 
                 <div className="panel-body">
@@ -170,142 +171,3 @@ export default Pannel;
 
 
 
-
-// import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import axios from "axios";
-
-// const Pannel = () => {
-//   const { id } = useParams();
-//   const [weeklyResults, setWeeklyResults] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     const fetchWeeklyResults = async () => {
-//       try {
-//         const response = await axios.get("https://dpbosservices.in:5000/get-data");
-//         const data = response.data.data.find((item) => item.id === parseInt(id));
-//         setWeeklyResults(data ? data.weeklyResults : []);
-//       } catch (err) {
-//         setError("Error fetching weekly results");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchWeeklyResults();
-//   }, [id]);
-
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
-
-//   if (error) {
-//     return <p>{error}</p>;
-//   }
-
-//   if (!weeklyResults.length) {
-//     return <p>No weekly results available</p>;
-//   }
-
-//   return (
-//     <div>
-//       <h2>Weekly Results for ID: {id}</h2>
-//       {weeklyResults.map((week, index) => (
-//         <div key={index}>
-//           <h3>{week.week}</h3>
-//           <pre>{JSON.stringify(week.data, null, 2)}</pre>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Pannel;
-
-
-// import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import axios from "axios";
-
-
-// const Pannel = () => {
-//   const { id } = useParams();
-//   const [weeklyResults, setWeeklyResults] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     const fetchWeeklyResults = async () => {
-//       try {
-//         const response = await axios.get("https://dpbosservices.in:5000/get-data");
-//         const data = response.data.data.find((item) => item.id === parseInt(id));
-//         setWeeklyResults(data ? data.weeklyResults : []);
-//       } catch (err) {
-//         setError("Error fetching weekly results");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchWeeklyResults();
-//   }, [id]);
-
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
-
-//   if (error) {
-//     return <p>{error}</p>;
-//   }
-
-//   if (!weeklyResults.length) {
-//     return <p>No weekly results available</p>;
-//   }
-
-//   // Function to render the table rows
-//   const renderTableRows = (weekData) => {
-//     return (
-//       <tr>
-//         <td>{weekData.dateRange}</td>
-//         <td>{weekData.Mon}</td>
-//         <td>{weekData.Tue}</td>
-//         <td>{weekData.Wed}</td>
-//         <td>{weekData.Thu}</td>
-//         <td>{weekData.Fri}</td>
-//         <td>{weekData.Sat}</td>
-//         <td>{weekData.Sun}</td>
-//       </tr>
-//     );
-//   };
-
-//   return (
-//     <div>
-//       <h2>Weekly Results for ID: {id}</h2>
-//       <table className="weekly-table">
-//         <thead>
-//           <tr>
-//             <th>Date</th>
-//             <th>Mon</th>
-//             <th>Tue</th>
-//             <th>Wed</th>
-//             <th>Thu</th>
-//             <th>Fri</th>
-//             <th>Sat</th>
-//             <th>Sun</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {weeklyResults.map((week, index) => (
-//             <React.Fragment key={index}>
-//               {renderTableRows(week)}
-//             </React.Fragment>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
-
-// export default Pannel;

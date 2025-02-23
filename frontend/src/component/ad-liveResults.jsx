@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import "../styles/extra.css";
 import axios from "axios";
 import AdminNavbar from "./adminNavbar";
+import { getAllLotteries, updateLotteryData } from "../api/lotteryApi";
 
 const AddLiveResult = () => {
   const [lotteryData, setLotteryData] = useState([]);
@@ -14,7 +15,7 @@ const AddLiveResult = () => {
   useEffect(() => {
     const fetchLotteryData = async () => {
       try {
-        const response = await axios.get("https://dpbosservices.in:5000/get-data");
+       const response = await getAllLotteries();
         setLotteryData(response.data.data);
       } catch (err) {
         setError("Error fetching today's data.");
@@ -27,26 +28,32 @@ const AddLiveResult = () => {
   }, []);
 
  
-  // Update Existing Lottery Entry
-  const updateLotteryEntry = async (id) => {
-    try {
-      const response = await axios.put(`https://dpbosservices.in:5000/get-data/${id}`, updateLottery);
-      setLotteryData(
-        lotteryData.map((item) =>
-          item._id === id ? { ...item, ...response.data.lottery } : item
-        )
-      ); // Update UI
-      setUpdateLottery({}); // Reset update form
-   alert("Lottery entry has been updated successfully!"); // Alert message
+ // Update Existing Lottery Entry
+const updateLotteryEntry = async (id) => {
+  try {
+    const response = await updateLotteryData(id, updateLottery);
+    
+    setLotteryData(
+      lotteryData.map((item) =>
+        item._id === id ? { ...item, ...response.data.lottery } : item
+      )
+    ); // Update UI
+    
+    setUpdateLottery({}); // Reset update form
+    
+    alert("Lottery entry has been updated successfully!"); // Alert message
+    
+    window.location.reload(); // Refresh the page after confirmation
   } catch (err) {
     setError("Error updating lottery entry.");
-    }
-  };
+  }
+};
+
 
   // Delete Lottery Entry
   const deleteLottery = async (id) => {
     try {
-      await axios.delete(`https://dpbosservices.in:5000/get-data/${id}`);
+      await deleteLottery(id);
       setLotteryData(lotteryData.filter((item) => item._id !== id)); // Remove deleted lottery from state
     } catch (err) {
       setError("Error deleting lottery entry.");

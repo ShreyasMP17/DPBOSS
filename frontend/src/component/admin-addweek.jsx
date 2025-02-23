@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Logo from "./Logo";
+
 import "../styles/extra.css";
 import axios from "axios";
 import AdminNavbar from "./adminNavbar";
+import { getAllLotteries } from "../api/lotteryApi";
 
 const AdminWeekLottery = () => {
   const [lotteryData, setLotteryData] = useState([]);
@@ -22,7 +23,7 @@ const AdminWeekLottery = () => {
   useEffect(() => {
     const fetchLotteryData = async () => {
       try {
-        const response = await axios.get("https://dpbosservices.in:5000/get-data");
+        const response = await getAllLotteries();
         setLotteryData(response.data.data);
       } catch (err) {
         setError("Error fetching today's data.");

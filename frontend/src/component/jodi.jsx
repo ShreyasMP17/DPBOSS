@@ -4,6 +4,7 @@ import "../styles/jodi.css";
 import Logo from "./Logo"
 import Footer from "./fotter"
 import axios from "axios";
+import { getAllLotteries } from "../api/lotteryApi";
 
 const Jodi = () => {
     const { id } = useParams();
@@ -18,7 +19,7 @@ const Jodi = () => {
     useEffect(() => {
       const fetchWeeklyResults = async () => {
         try {
-          const response = await axios.get("https://dpbosservices.in:5000/get-data");
+          const response = await getAllLotteries();
           const data = response.data.data.find((item) => item.id === parseInt(id));
           setLotteryData(data ? data.weeklyResults : []);
           setName(data.name)
@@ -62,7 +63,7 @@ const Jodi = () => {
 <h1 class="chart-h1">{name} JODI CHART </h1>
 <div class="para3">
 <h2 >{name} JODI RESULT CHART RECORDS </h2>
-<p >Dpboss KALYAN {name} chart, KALYAN {name} chart, old KALYAN {name} chart, KALYAN MORNING pana patti chart, dpboss KALYAN MORNING, KALYAN {name} record, KALYAN {name} record, KALYAN {name} chart 2015, KALYAN {name} chart 2012, KALYAN {name} chart 2012 to 2023, KALYAN MORNING final ank, KALYAN {name} chart.co, KALYAN {name} chart matka, KALYAN {name} chart book, KALYAN MORNING matka chart, matka panel chart KALYAN MORNING, matka KALYAN MORNING chart, satta KALYAN MORNING chart panel, KALYAN MORNING state chart, KALYAN MORNING chart result, डीपी बॉस, सट्टा चार्ट, सट्टा मटका पैनल चार्ट, सट्टा मटका पैनल चार्ट, कल्याण मॉर्निंग मटका पैनल चार्ट, सट्टा मटका कल्याण मॉर्निंग चार्ट पैनल, कल्याण मॉर्निंग सट्टा चार्ट, कल्याण मॉर्निंग पैनल चार्ट</p>
+<p >Dpboss KALYAN {name} chart, KALYAN {name} chart, old KALYAN {name} chart, KALYAN MORNING pana patti chart, dpboss KALYAN MORNING, KALYAN {name} record, KALYAN {name} record, KALYAN {name} chart 2015, KALYAN {name} chart 2012, KALYAN {name} chart 2023 to 2025, KALYAN MORNING final ank, KALYAN {name} chart.co, KALYAN {name} chart matka, KALYAN {name} chart book, KALYAN MORNING matka chart, matka panel chart KALYAN MORNING, matka KALYAN MORNING chart, satta KALYAN MORNING chart panel, KALYAN MORNING state chart, KALYAN MORNING chart result, डीपी बॉस, सट्टा चार्ट, सट्टा मटका पैनल चार्ट, सट्टा मटका पैनल चार्ट, कल्याण मॉर्निंग मटका पैनल चार्ट, सट्टा मटका कल्याण मॉर्निंग चार्ट पैनल, कल्याण मॉर्निंग सट्टा चार्ट, कल्याण मॉर्निंग पैनल चार्ट</p>
 </div>
 
 <div class="chart-result">    
@@ -76,7 +77,7 @@ const Jodi = () => {
 
 <div className="pannel panel-info">
                 <div className="panel-heading">
-                    <h3> {name} MATKA JODI RECORD 2019 - 2024</h3>
+                    <h3> {name} MATKA JODI RECORD 2023 - 2025</h3>
                 </div>
 
                 <div className="panel-body">

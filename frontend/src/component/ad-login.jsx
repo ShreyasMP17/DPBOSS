@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext"; // Import AuthContext
 import axios from "axios"; // Import axios for API calls
 import "../styles/login.css";
+import { loginAdmin } from "../api/lotteryApi";
 
 const ADM = () => {
   const { login } = useContext(AuthContext); // Use AuthContext for login
@@ -15,7 +16,7 @@ const ADM = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://dpbosservices.in:5000/loginadmin", {
+      const response = await loginAdmin({
         username: email,
         password: password,
       });
@@ -66,63 +67,3 @@ const ADM = () => {
 
 export default ADM;
 
-
-
-
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import '../styles/login.css'
-
-// const ADM = () => {
-
-//     let navigate=useNavigate()
-//     let login = (m)=>{
-//         m.preventDefault();
-//         let data= [email,password]
-
-        
-//         if(email=="lottery@gmail.com" && password =="4321" ){
-//         navigate("/admin-navbar")
-//         }else{
-//             alert("Invalid details")
-//         }
-//     }
-//     let [email,setEmail] = useState("")
-//         let [password,setPassword]=useState("")
-
-    
-//         return (
-//             <div className="admLogin">
-//               <div className="logo">
-//                 <img src="dplogo.png" alt="Logo" style={{ width: "200px", height: "auto" }} />
-//               </div>
-              
-//               <div className="form">
-//               <h1>Admin Login</h1>
-//                 <form onSubmit={login}>
-//                   <div className="email">
-//                     <input
-//                       type="email"
-//                       required
-//                       value={email}
-//                       onChange={(e) => setEmail(e.target.value)}
-//                       placeholder="Enter email"
-//                     />
-//                   </div>
-//                   <div className="password">
-//                     <input
-//                       type="password"
-//                       required
-//                       value={password}
-//                       onChange={(s) => setPassword(s.target.value)}
-//                       placeholder="Enter password"
-//                     />
-//                   </div>
-//                   <button>LOGIN</button>
-//                 </form>
-//               </div>
-//             </div>
-//           );
-// }
- 
-// export default ADM;

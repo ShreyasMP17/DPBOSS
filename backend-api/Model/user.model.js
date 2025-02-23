@@ -95,12 +95,12 @@ const weeklyResultSchema = new mongoose.Schema({
 });
 
 // Lottery schema
-const lotterySchema = new mongoose.Schema(
+const LotterySchema = new mongoose.Schema(
     {
         name: { type: String, required: true },
-        leftNo: { type: String, required: true },
-        midNo: { type: String, required: true },
-        rightNo: { type: String, required: true },
+        leftNo: { type: String, required: false },
+        midNo: { type: String, required: false },
+        rightNo: { type: String, required: false },
         timeStart: { type: String, required: true },
         timeEnd: { type: String, required: true },
         createdAt: { type: Date, default: Date.now },
@@ -109,7 +109,7 @@ const lotterySchema = new mongoose.Schema(
     { collection: 'Lotteries' } // Explicit collection name
 );
 
-const Lottery = mongoose.model('Lottery', lotterySchema);
+const Lottery = mongoose.model('Lottery', LotterySchema);
 module.exports = Lottery;
 
 

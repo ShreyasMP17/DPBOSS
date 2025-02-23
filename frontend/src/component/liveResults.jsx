@@ -1,6 +1,7 @@
 // src/components/LiveResults.js
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getLiveResults } from "../api/lotteryApi";
 
 const LiveResults = () => {
   const [liveResults, setLiveResults] = useState([]); // Holds live results
@@ -10,7 +11,7 @@ const LiveResults = () => {
   useEffect(() => {
     const fetchLiveResults = async () => {
       try {
-        const response = await axios.get("https://dpbosservices.in:5000/live-results");
+        const response = await getLiveResults();
         setLiveResults(response.data.data); // Update live results from backend
       } catch (err) {
         setError("Error fetching live results.");

@@ -7,12 +7,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #11076f; /* Dark background */
+    padding: 10px 30px ;
+    background-color: #931600; /* Dark background */
     color: white;
     position: relative;
     z-index: 1000; /* Ensures navbar is always on top */
-    padding: 20px;
+    
     margin-bottom: 10px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .nav-links a:hover {
-    color: #ff6f61; /* Highlight color on hover */
+    color: #0037ea; /* Highlight color on hover */
 }
 
 /* Hamburger Menu */

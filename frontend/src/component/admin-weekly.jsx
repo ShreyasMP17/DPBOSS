@@ -30,8 +30,8 @@ const Demon = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(
-                `https://dpbosservices.in:5000/post-week/${id}/weekly`,
+            const response = await 
+                createWeekLottery(id,
                 { week, data }
             );
             setMessage(response.data.message);

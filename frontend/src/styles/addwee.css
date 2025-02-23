@@ -51,6 +51,38 @@ button:hover {
     background-color: #0056b3;
 }
 
+.create-btn{
+    background-color: rebeccapurple;
+    margin: 10px;
+}
+
+.edit-btn{
+    background-color: green;
+    padding-top: 5px ;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+
+.update-btn{
+    background-color: rgb(0, 64, 128);
+    padding-top: 5px ;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+
+.cancel-btn{
+    background-color: rgb(0, 128, 122);
+    padding-top: 5px ;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+
+.delete-btn{
+    background-color: red;
+    padding-top: 8px ;
+    padding-bottom: 8px;
+    font-size: 16px;
+}
 
 /* Weekly input section styles */
 .weekly-section {

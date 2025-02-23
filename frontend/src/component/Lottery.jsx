@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import axios from "axios";
+import {getLiveResults, getAllLotteries} from "../api/lotteryApi";
 
 const LotteryHome = () => {
   const [lotteryData, setLotteryData] = useState([]); // Today's data
@@ -14,7 +15,7 @@ const LotteryHome = () => {
   useEffect(() => {
     const fetchLotteryData = async () => {
       try {
-        const response = await axios.get("https://dpbosservices.in:5000/get-data");
+        const response = await getAllLotteries();
         setLotteryData(response.data.data);
       } catch (err) {
         setError("Error fetching today's data.");
@@ -32,22 +33,21 @@ const LotteryHome = () => {
     const formattedDate = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
 
   
-    const fetchLiveData = async () => {
-      try {
-          const response = await axios.get('https://dpbosservices.in:5000/live-data');
-          setLiveResults(response.data);
+    useEffect(() => {
+      const fetchLotteryData = async () => {
+        try {
+          const response = await getLiveResults();
+          setLiveResults(response.data.data);
+        } catch (err) {
+          setError("Error fetching today's data.");
+        } finally {
           setLoading(false);
-      } catch (err) {
-          setError("Failed to fetch live data.");
-          setLoading(false);
-      }
-  };
+        }
+      };
+  
+      fetchLotteryData();
+    }, []);
 
-  // useEffect(() => {
-  //     fetchLiveData();
-  //     const interval = setInterval(fetchLiveData, 60000); // Refresh every 30 seconds
-  //     return () => clearInterval(interval); // Cleanup on component unmount
-  // }, []);
 
   if (loading) {
       return <div>Loading...</div>;
@@ -152,26 +152,7 @@ const LotteryHome = () => {
 
             <h4 class="flyr24"> WORLD ME SABSE FAST SATTA MATKA RESULT </h4>
             <div className="display">
-              {/* {lotteryData.map((data)=>(
-                
-                  <div key={data.id}
-               className={`mainData ${[5, 9, 13,17, 21, 28, 31, 35, 41, 45, 50].includes(data.id) ? 'highlight' : ''}`}>
-         <h4>{data.name}</h4>
-         <span>
-           {data.leftNo}-{data.midNo}-{data.rightNo}
-         </span>
-         <p>
-           {data.timeStart}-{data.timeEnd}
-         </p>
-         <a href={`/jodi/${data.id}`} className="jodi">
-           Jodi
-         </a>
-         <a href={`/lottery/${data.id}`} className="panel">
-           Panel
-         </a>
-       </div>
-                
-              ))} */}
+              
               {lotteryData
   .sort((a, b) => a.id - b.id) // Sorting in ascending order
   .map((data) => (
@@ -195,30 +176,6 @@ const LotteryHome = () => {
     </div>
   ))}
 
-
-  {/* {Array.isArray(lotteryData) && lotteryData.length > 0 ? (
-    lotteryData.map((data) => (
-      <div
-       
-      >
-        <h4>{data.name}</h4>
-        <span>
-          {data.leftNo}-{data.midNo}-{data.rightNo}
-        </span>
-        <p>
-          {data.timeStart}-{data.timeEnd}
-        </p>
-        <a href={`/jodi/${data.id}`} className="jodi">
-          Jodi
-        </a>
-        <a href={`/lottery/${data.id}`} className="panel">
-          Panel
-        </a>
-      </div>
-    ))
-  ) : (
-    <p>Loading data...</p> // Placeholder for when data is not yet available
-  )} */}
 </div>
             <div class="support">
                 <p>Email for any inquiries Or Support:</p>

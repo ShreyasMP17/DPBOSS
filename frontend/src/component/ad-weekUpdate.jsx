@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../styles/addwee.css";
 import AdminNavbar from "./adminNavbar";
+import { createWeekLottery } from "../api/lotteryApi";
 
 const WeekUpadte = () => {
     const { id } = useParams(); // Get the id from the route
@@ -31,8 +32,7 @@ const WeekUpadte = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(
-                `https://dpbosservices.in:5000/post-week/${id}/weekly`,
+            const response = await createWeekLottery(id,
                 { week, data }
             );
             setMessage(response.data.message);
@@ -113,19 +113,3 @@ export default WeekUpadte;
 
 
 
-
-// const handleEdit = async (day) => {
-//   const updatedData = data[day];
-//   try {
-//       const response = await axios.post(
-//           `https://dpbosservices.in:5000/edit-week/${id}/weekly`, // Use your edit endpoint
-//           {
-//               week, // Use the week corresponding to the day
-//               data: updatedData, // Updated data for that week
-//           }
-//       );
-//       setMessage(response.data.message);
-//   } catch (error) {
-//       setMessage(error.response?.data?.message || "An error occurred while editing.");
-//   }
-// };
