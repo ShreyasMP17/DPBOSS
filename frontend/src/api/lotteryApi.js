@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000"; // Change this if your backend is hosted elsewhere
+// const API_BASE_URL = "http://localhost:3000"; // Change this if your backend is hosted elsewhere
+const API_BASE_URL = "https://dpbosservices.in:5000";
+
 
 // Lottery API Calls
 export const createLottery = async (lotteryData) => {
